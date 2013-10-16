@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	package="eu.inmite.android.gridwichterle"
+	android:installLocation="auto"
+	android:versionCode="10000"
+	android:versionName="1.0.0" >
+
+	<uses-sdk
+		android:minSdkVersion="14"
+		android:targetSdkVersion="18" />
+
+	<uses-feature
+		android:name="android.hardware.touchscreen"
+		android:required="false" />
+
+	<uses-feature
+		android:name="android.hardware.screen.landscape"
+		android:required="false"/>
+
+	<!-- This permission is used for overlapping all application  -->
+	<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+
+	<application
+		android:name=".App"
+		android:hardwareAccelerated="true"
+		android:allowClearUserData="true"
+		android:icon="@drawable/ic_launcher"
+		android:label="@string/app_name" >
+
+		<activity
+			android:name=".activity.MainActivity"
+			android:theme="@style/AppTheme.Translucent"
+			android:label="@string/app_name" >
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+
+		<service android:name=".services.GridOverlayService" />
+
+		<receiver android:name=".core.NotificationReceiver">
+			<intent-filter>
+				<action android:name="notification_cancelled"/>
+			</intent-filter>
+		</receiver>
+
+	</application>
+
+
+
+</manifest>

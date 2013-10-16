@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">GridWichterle</string>
+
+	<!-- Common -->
+	<string name="white">White</string>
+	<string name="black">Black</string>
+
+	<!-- Error -->
+	<string name="error_empty_text_size">Please fill grid size!</string>
+	<string name="error_lower_size">Square side size must be higher than zero.</string>
+
+	<!-- Notification -->
+    <string name="notification_title">GridWichterle is running!</string>
+    <string name="notification_desc">Touch for grid settings</string>
+	<string name="cancel_grid">Remove Grid</string>
+
+	<!-- Settings-->
+	<string name="setting_title">Overlay settings</string>
+	<string name="settings_transparency">Transparency</string>
+	<string name="settings_close">Close</string>
+	<string name="settings_save">Save</string>
+	<string name="settings_full_screen">FullScreen</string>
+	<string name="settings_choose_color">Choose overlay color:</string>
+	<string name="settings_set_color">Set color</string>
+	<string name="hint">Set grid size</string>
+
+</resources>

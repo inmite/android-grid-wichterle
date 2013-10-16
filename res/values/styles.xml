@@ -1,0 +1,74 @@
+<resources>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="android:Theme.Holo.Light">
+    </style>
+
+	<style name="AppTheme.Translucent" parent="android:Theme.Holo.NoActionBar">
+		<item name="android:windowBackground">@android:color/transparent</item>
+		<item name="android:colorBackgroundCacheHint">@null</item>
+		<item name="android:windowIsTranslucent">true</item>
+		<item name="android:windowNoTitle">true</item>
+		<item name="android:windowContentOverlay">@null</item>
+	</style>
+
+	<!-- Application theme. -->
+	<style name="SeekbarHolo" parent="@android:style/Widget.SeekBar">
+		<item name="android:indeterminateOnly">false</item>
+		<item name="android:progressDrawable">@drawable/scrubber_progress_horizontal_holo_dark</item>
+		<item name="android:indeterminateDrawable">@drawable/scrubber_progress_horizontal_holo_dark</item>
+		<item name="android:minHeight">13dip</item>
+		<item name="android:maxHeight">13dip</item>
+		<item name="android:thumb">@drawable/scrubber_control_selector_holo</item>
+		<item name="android:thumbOffset">16dip</item>
+		<item name="android:focusable">true</item>
+	</style>
+
+	<!-- Settings -->
+
+	<style name="LayoutSettings">
+		<item name="android:paddingLeft">@dimen/grid2</item>
+		<item name="android:paddingRight">@dimen/grid2</item>
+		<item name="android:paddingTop">@dimen/grid2</item>
+		<item name="android:background">@color/background</item>
+	</style>
+
+	<style name="EditTextSize" parent="@android:style/Widget.EditText">
+		<item name="android:background">@drawable/bg_edittext</item>
+		<item name="android:textColor">@android:color/white</item>
+		<item name="android:inputType">numberDecimal</item>
+		<item name="android:maxLength">2</item>
+	</style>
+
+	<style name="TextChooseColor">
+		<item name="android:textColor">@android:color/white</item>
+		<item name="android:textSize">@dimen/choose_color_font_size</item>
+	</style>
+
+	<style name="TextTitle">
+		<item name="android:textSize">@dimen/title_font_size</item>
+		<item name="android:textColor">@android:color/white</item>
+		<item name="android:textStyle">bold</item>
+		<item name="android:layout_marginTop">@dimen/grid1</item>
+	</style>
+
+	<style name="TextDesc">
+		<item name="android:textSize">@dimen/desc_font_size</item>
+		<item name="android:textColor">@android:color/white</item>
+		<item name="android:layout_marginTop">@dimen/grid2</item>
+	</style>
+
+	<!-- Notification -->
+    <style name="NotificationText">
+        <item name="android:textSize">@dimen/notification_font_size</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:layout_marginLeft">@dimen/grid1</item>
+        <item name="android:layout_marginTop">@dimen/grid0</item>
+    </style>
+
+    <style name="NotificationText.Desc">
+        <item name="android:layout_marginTop">@dimen/grid1</item>
+    </style>
+
+
+</resources>

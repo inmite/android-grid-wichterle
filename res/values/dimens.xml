@@ -1,0 +1,26 @@
+<resources>
+    <dimen name="grid0">4dp</dimen>
+    <dimen name="grid1">8dp</dimen>
+    <dimen name="grid2">16dp</dimen>
+
+	<dimen name="title_font_size">18sp</dimen>
+	<dimen name="desc_font_size">16sp</dimen>
+    <dimen name="notification_font_size">14sp</dimen>
+	<dimen name="choose_color_font_size">14sp</dimen>
+
+	<!-- Color picker dimens -->
+	<!-- Standart dimens for the color wheel-->
+    <dimen name="color_wheel_radius">124dp</dimen>
+    <dimen name="color_wheel_thickness">8dp</dimen>
+    <dimen name="color_center_halo_radius">60dp</dimen>
+    <dimen name="color_center_radius">54dp</dimen>
+    <dimen name="color_pointer_halo_radius">18dp</dimen>
+    <dimen name="color_pointer_radius">14dp</dimen>
+    
+    <!-- Standart dimens for the bars -->
+    <dimen name="bar_thickness">4dp</dimen>
+    <dimen name="bar_length">240dp</dimen>
+    <dimen name="bar_pointer_radius">6dp</dimen>
+    <dimen name="bar_pointer_halo_radius">14dp</dimen>
+
+</resources>
