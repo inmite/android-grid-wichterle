@@ -3,6 +3,10 @@
 <resources>
 
 	<color name="background">#111111</color>
+	<color name="white">#ffffff</color>
 	<color name="gray">#999999</color>
+	<color name="turquoise">#33B5E5</color>
+	<color name="gray_line">#343639</color>
+	<color name="settings_header">#bebebe</color>
 
 </resources>

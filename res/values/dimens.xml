@@ -2,6 +2,8 @@
     <dimen name="grid0">4dp</dimen>
     <dimen name="grid1">8dp</dimen>
     <dimen name="grid2">16dp</dimen>
+	<dimen name="grid4">20dp</dimen>
+	<dimen name="grid5">24dp</dimen>
 
 	<dimen name="title_font_size">18sp</dimen>
 	<dimen name="desc_font_size">16sp</dimen>

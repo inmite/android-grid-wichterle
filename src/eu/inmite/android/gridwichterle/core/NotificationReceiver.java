@@ -4,9 +4,11 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+
 import eu.inmite.android.gridwichterle.bus.CancelGridBus;
 import eu.inmite.android.gridwichterle.bus.BusProvider;
-import eu.inmite.android.gridwichterle.bus.SettingsOnOffBus;
+import eu.inmite.android.gridwichterle.bus.GridOnOffBus;
+import eu.inmite.android.gridwichterle.bus.ShowSettingsBus;
 
 /**
  * Created with IntelliJ IDEA.
@@ -27,11 +29,11 @@ public class NotificationReceiver extends BroadcastReceiver {
 
 		if ("notification_settings".equals(action)) {
 			Log.d(Constants.TAG, "Settings on");
-			BusProvider.getInstance().post(new SettingsOnOffBus(SettingsOnOffBus.ACTION_SETTINGS_ON));
+			BusProvider.getInstance().post(new ShowSettingsBus());
 		}
 
 		if ("notification_settings_off".equals(action)) {
-			BusProvider.getInstance().post(new SettingsOnOffBus(SettingsOnOffBus.ACTION_SETTINGS_OFF));
+			BusProvider.getInstance().post(new GridOnOffBus(GridOnOffBus.ACTION_GRID_OFF));
 		}
 	}
 

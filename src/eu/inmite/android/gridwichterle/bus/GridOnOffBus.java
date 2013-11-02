@@ -6,14 +6,14 @@ package eu.inmite.android.gridwichterle.bus;
  * Date: 10/13/13
  * Time: 7:05 PM
  */
-public class SettingsOnOffBus {
+public class GridOnOffBus {
 
-	public static final int ACTION_SETTINGS_ON = 0;
-	public static final int ACTION_SETTINGS_OFF = 1;
+	public static final int ACTION_GRID_ON = 0;
+	public static final int ACTION_GRID_OFF = 1;
 
 	private int mAction;
 
-	public SettingsOnOffBus(int action) {
+	public GridOnOffBus(int action) {
 		mAction = action;
 	}
 

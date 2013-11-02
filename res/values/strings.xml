@@ -2,28 +2,47 @@
 <resources>
 
     <string name="app_name">GridWichterle</string>
+    <string name="size">Size</string>
 
-	<!-- Common -->
 	<string name="white">White</string>
 	<string name="black">Black</string>
+	<string name="author">Author</string>
+	<string name="version">Version</string>
+	<string name="inmite_developers">Inmite Developers</string>
+
 
 	<!-- Error -->
 	<string name="error_empty_text_size">Please fill grid size!</string>
 	<string name="error_lower_size">Square side size must be higher than zero.</string>
 
 	<!-- Notification -->
-    <string name="notification_title">GridWichterle is running!</string>
+    <string name="notification_title">GridWichterle</string>
     <string name="notification_desc">Touch for grid settings</string>
 	<string name="cancel_grid">Remove Grid</string>
 
+	<!-- Dialog -->
+	<string name="dialog_cancel">Cancel</string>
+	<string name="dialog_set_color">Set color</string>
+	<string name="dialog_title_choose_color">Choose color</string>
+
 	<!-- Settings-->
 	<string name="setting_title">Overlay settings</string>
+	<string name="setting_header_grid">GRID</string>
+	<string name="setting_header_about">ABOUT</string>
 	<string name="settings_transparency">Transparency</string>
 	<string name="settings_close">Close</string>
 	<string name="settings_save">Save</string>
 	<string name="settings_full_screen">FullScreen</string>
-	<string name="settings_choose_color">Choose overlay color:</string>
+	<string name="settings_choose_color">Color</string>
 	<string name="settings_set_color">Set color</string>
+	<string name="settings_desc">This app will show grid overlay over whole system which helps you to verify your excellent app design.</string>
+	<string name="settings_the_code">The code</string>
+	<string name="settings_seek_bar">%s dp</string>
+	<string name="settings_send_feedback">Send Feedback</string>
+	<string name="settings_wichterle_question">Why Wichterle?</string>
+	<string name="settings_wichterle_desc">Otto Wichterle was a famous Czech inventor, best known for his invention of contact lenses. You can see more details with contact lenses, just like with
+		this app. You won\'t miss any misaligned views in your app.</string>
 	<string name="hint">Set grid size</string>
+
 
 </resources>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+	<LinearLayout
+		android:orientation="vertical"
+		style="@style/Layout.DialogColor">
+
+		<com.larswerkman.colorpicker.ColorPicker
+			android:id="@+id/picker"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content" />
+
+		<TextView
+			style="@style/TextView.ColorTransparencyHeader"
+			android:text="@string/settings_transparency" />
+
+		<com.larswerkman.colorpicker.OpacityBar
+			android:id="@+id/opacitybar"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content" />
+
+		<LinearLayout
+			style="@style/Layout.OtherColors"
+			android:orientation="horizontal"
+			android:gravity="center">
+
+			<Button
+				android:id="@+id/btnWhite"
+				android:background="@drawable/bg_btn_white"
+				android:text="@string/white"
+				android:padding="16dp"
+				android:textColor="@android:color/black"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content" />
+
+			<Button
+				android:id="@+id/btnBlack"
+				android:text="@string/black"
+				android:padding="16dp"
+				android:layout_marginLeft="8dp"
+				android:textColor="@android:color/white"
+				android:background="@drawable/bg_btn_black"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content" />
+
+		</LinearLayout>
+
+	</LinearLayout>
+
+</ScrollView>

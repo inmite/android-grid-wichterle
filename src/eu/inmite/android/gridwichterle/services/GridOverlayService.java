@@ -15,13 +15,14 @@ import android.view.WindowManager;
 import android.widget.RemoteViews;
 import com.squareup.otto.Subscribe;
 import eu.inmite.android.gridwichterle.R;
+import eu.inmite.android.gridwichterle.activity.SettingsActivity;
 import eu.inmite.android.gridwichterle.bus.BusProvider;
 import eu.inmite.android.gridwichterle.bus.CancelGridBus;
-import eu.inmite.android.gridwichterle.bus.SettingsOnOffBus;
+import eu.inmite.android.gridwichterle.bus.GridOnOffBus;
+import eu.inmite.android.gridwichterle.bus.ShowSettingsBus;
 import eu.inmite.android.gridwichterle.core.Constants;
 import eu.inmite.android.gridwichterle.core.NotificationReceiver;
 import eu.inmite.android.gridwichterle.views.GridOverlay;
-import eu.inmite.android.gridwichterle.views.Settings;
 
 /**
  * Created with IntelliJ IDEA.
@@ -32,9 +33,12 @@ import eu.inmite.android.gridwichterle.views.Settings;
 public class GridOverlayService extends Service {
 
 	private GridOverlay mGridOverlay;
-	private Settings mSettings;
 
 	private static final int NOTIFICATION_ID = 1;
+
+	public static boolean sIsServiceRunning = false;
+	public static boolean sIsGridShown = false;
+
 
 	@Override
 	public void onCreate() {
@@ -46,6 +50,7 @@ public class GridOverlayService extends Service {
 
 	private void showGrid() {
 		Log.d(Constants.TAG, "GridOverlayService.showGrid()");
+		GridOverlayService.sIsGridShown = true;
 		final WindowManager.LayoutParams lp = new WindowManager.LayoutParams(
 				ViewGroup.LayoutParams.MATCH_PARENT,
 				ViewGroup.LayoutParams.MATCH_PARENT,
@@ -62,7 +67,7 @@ public class GridOverlayService extends Service {
 
 	private void removeGrid() {
 		Log.d(Constants.TAG, "GridOverlayService.removeGrid()");
-
+		GridOverlayService.sIsGridShown = false;
 		try {
 			if(mGridOverlay != null && mGridOverlay.getParent() != null) {
 				final WindowManager wm = (WindowManager) getSystemService(WINDOW_SERVICE);
@@ -85,27 +90,10 @@ public class GridOverlayService extends Service {
 		showGrid();
 	}
 
-	private void showSettings() {
+	@Subscribe
+	public void showSettings(ShowSettingsBus showSettingsBus) {
 		Log.d(Constants.TAG, "GridOverlayService.showSettings()");
-		final WindowManager.LayoutParams lp = new WindowManager.LayoutParams(
-				ViewGroup.LayoutParams.MATCH_PARENT,
-				ViewGroup.LayoutParams.MATCH_PARENT,
-				WindowManager.LayoutParams.TYPE_SYSTEM_ALERT,
-				WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL,
-				PixelFormat.TRANSLUCENT
-		);
-
-
-		if (mSettings == null) {
-			mSettings = new Settings(this);
-		}
-
-
-		if(mSettings.getParent() == null) {
-			final WindowManager wm = (WindowManager) getSystemService(WINDOW_SERVICE);
-			wm.addView(mSettings, lp);
-		}
-
+		SettingsActivity.call(getApplicationContext());
 	}
 
 	private void showNotification() {
@@ -151,18 +139,6 @@ public class GridOverlayService extends Service {
 		}*/
 	}
 
-	private void removeSettings() {
-		try {
-			if(mSettings.getParent() != null) {
-				final WindowManager wm = (WindowManager) getSystemService(WINDOW_SERVICE);
-				wm.removeView(mSettings);
-			}
-		} catch (Exception e) {
-			Log.e(Constants.TAG, "GridOverlayService.removeGrid() - failed", e);
-		}
-
-	}
-
 	private PendingIntent getDeleteIntent() {
 		Intent intent = new Intent(getApplicationContext(), NotificationReceiver.class);
 		intent.setAction("notification_cancelled");
@@ -185,30 +161,32 @@ public class GridOverlayService extends Service {
 	public void cancelGrid(CancelGridBus cancelGridBus) {
 		Log.d(Constants.TAG, "GridOverlayService.CancelGrid()");
 
+		sIsServiceRunning = false;
+		sIsGridShown = false;
+
 		removeGrid();
-		removeSettings();
 		stopForeground(true);
 	}
 
 	@Subscribe
-	public void settingsAction(SettingsOnOffBus settingsOnOffBus) {
+	public void gridAction(GridOnOffBus settingsOnOffBus) {
 
-		if (settingsOnOffBus.getAction() == SettingsOnOffBus.ACTION_SETTINGS_ON) {
-			removeGrid();
-			showSettings();
+		if (settingsOnOffBus.getAction() == GridOnOffBus.ACTION_GRID_ON) {
+			showGrid();
 		}
 
-		if (settingsOnOffBus.getAction() == SettingsOnOffBus.ACTION_SETTINGS_OFF) {
-			removeSettings();
-			showGrid();
+		if (settingsOnOffBus.getAction() == GridOnOffBus.ACTION_GRID_OFF) {
+			removeGrid();
 		}
 
 	}
 
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
-		showGrid();
-		showNotification();
+		if(!sIsServiceRunning) {
+			sIsServiceRunning = true;
+			showNotification();
+		}
 		return Service.START_NOT_STICKY;
 	}
 
