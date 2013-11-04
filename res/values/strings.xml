@@ -32,7 +32,7 @@
 	<string name="settings_transparency">Transparency</string>
 	<string name="settings_close">Close</string>
 	<string name="settings_save">Save</string>
-	<string name="settings_full_screen">FullScreen</string>
+	<string name="settings_full_screen">Full screen</string>
 	<string name="settings_choose_color">Color</string>
 	<string name="settings_set_color">Set color</string>
 	<string name="settings_desc">This app will show grid overlay over whole system which helps you to verify your excellent app design.</string>

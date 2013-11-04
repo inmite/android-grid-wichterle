@@ -68,16 +68,16 @@
 		<skipDefault>false</skipDefault>
 	</properties>
 
-	<!-- 	<url>https://bitbucket.org/tprochazka/android-framework/</url> -->
+		<url>https://github.com/inmite/android-grid-wichterle</url>
 
-	<!-- 	<issueManagement>
+	 	<issueManagement>
 			<system>GitHub</system>
-			<url>https://bitbucket.org/tprochazka/android-framework/issues?status=new&amp;status=open</url>
+			<url>https://github.com/inmite/android-grid-wichterle/issues</url>
 		</issueManagement>
 
 		<scm>
-			<developerConnection>scm:git:git@bitbucket.org:inmite/android-framework.git</developerConnection>
-		</scm>-->
+			<developerConnection>scm:git:github.com/inmite/android-grid-wichterle.git</developerConnection>
+		</scm>
 
 
 	<dependencies>
@@ -101,6 +101,11 @@
 			<version>1.3.4</version>
 		</dependency>
 
+		<dependency>
+			<groupId>com.jakewharton</groupId>
+			<artifactId>butterknife</artifactId>
+			<version>3.0.0</version>
+		</dependency>
 
 	</dependencies>
 
