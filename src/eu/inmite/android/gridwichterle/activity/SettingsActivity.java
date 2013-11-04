@@ -91,6 +91,7 @@ public class SettingsActivity extends FragmentActivity {
 					chckFullScreen.setChecked(true);
 					mConfig.setFullScreenMode(true);
 				}
+				applyNow();
 			}
 		});
 
@@ -130,7 +131,8 @@ public class SettingsActivity extends FragmentActivity {
 
 			@Override
 			public void onStopTrackingTouch(SeekBar seekBar) {
-
+				mConfig.setGridSideSize(seekBar.getProgress() + 4);
+				applyNow();
 			}
 		});
 
@@ -151,7 +153,6 @@ public class SettingsActivity extends FragmentActivity {
 			@Override
 			public void onCheckedChanged(CompoundButton compoundButton, boolean switchOn) {
 				if (switchOn) {
-					mConfig.setGridSideSize(seekBar.getProgress() + 4);
 					BusProvider.getInstance().post(new GridOnOffBus(GridOnOffBus.ACTION_GRID_ON));
 				} else {
 					BusProvider.getInstance().post(new GridOnOffBus(GridOnOffBus.ACTION_GRID_OFF));
@@ -159,6 +160,13 @@ public class SettingsActivity extends FragmentActivity {
 			}
 		});
 
+	}
+
+	private void applyNow() {
+		if (switchGrid.isChecked()) {
+			BusProvider.getInstance().post(new GridOnOffBus(GridOnOffBus.ACTION_GRID_OFF));
+			BusProvider.getInstance().post(new GridOnOffBus(GridOnOffBus.ACTION_GRID_ON));
+		}
 	}
 
 	private String getVersionName(Context ctx) {
@@ -174,6 +182,7 @@ public class SettingsActivity extends FragmentActivity {
 	@Subscribe
 	public void changeColor(ColorChangeBus colorChangeBus) {
 		viewColor.setBackgroundColor(mConfig.getColor());
+		applyNow();
 	}
 
 	@Subscribe

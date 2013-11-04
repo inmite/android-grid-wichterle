@@ -4,10 +4,8 @@ This app will show grid overlay over whole system which helps you to verify your
 
 ## Download:
 
-[APK](GrigWichterle-1.0.0.apk)
-<!--
 [![Get it on Google Play](http://www.android.com/images/brand/get_it_on_play_logo_small.png)](https://play.google.com/store/apps/details?id=eu.inmite.android.gridwichterle) 
---->
+
 
 ## What is the grid good for?
  - makes adhering to [Android Design Guidelines - Metrics and Grids](http://developer.android.com/design/style/metrics-grids.html) easy
