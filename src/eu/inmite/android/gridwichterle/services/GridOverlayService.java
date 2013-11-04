@@ -194,7 +194,7 @@ public class GridOverlayService extends Service {
 	public void onConfigurationChanged(Configuration newConfig) {
 		super.onConfigurationChanged(newConfig);
 		//we need restart grid when a screen rotates
-		if (mGridOverlay.getParent() != null) {
+		if (mGridOverlay != null && mGridOverlay.getParent() != null) {
 			restartGrid();
 		}
 	}
