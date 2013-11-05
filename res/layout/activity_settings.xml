@@ -140,10 +140,20 @@
 
 			<View style="@style/GrayLine" />
 
-			<TextView
+			<LinearLayout
 				android:id="@+id/txtTheCode"
-				style="@style/TextView.SettingTitle.Row"
-				android:text="@string/settings_the_code" />
+				style="@style/Layout.SettingsItem"
+				android:orientation="vertical">
+
+				<TextView
+					style="@style/TextView.SettingTitle"
+					android:text="@string/settings_the_code" />
+
+				<TextView
+					style="@style/TextView.SettingDesc"
+					android:text="GitHub" />
+
+			</LinearLayout>
 
 			<View style="@style/GrayLine" />
 
@@ -159,7 +169,7 @@
 				android:orientation="vertical">
 
 				<TextView
-					style="@style/TextView.SettingTitle"
+					style="@style/TextView.SettingTitle.Gray"
 					android:text="@string/version" />
 
 				<TextView
@@ -175,7 +185,7 @@
 				android:orientation="vertical">
 
 				<TextView
-					style="@style/TextView.SettingTitle"
+					style="@style/TextView.SettingTitle.Gray"
 					android:text="@string/settings_wichterle_question" />
 
 				<TextView

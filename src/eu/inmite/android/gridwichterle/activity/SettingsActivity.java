@@ -40,7 +40,7 @@ public class SettingsActivity extends FragmentActivity {
 	@InjectView(R.id.txtSendFeedback)
 	public TextView txtSendFeedback;
 	@InjectView(R.id.txtTheCode)
-	public TextView txtTheCode;
+	public LinearLayout txtTheCode;
 	@InjectView(R.id.seekBar)
 	public SeekBar seekBar;
 	@InjectView(R.id.layoutColor)

@@ -43,7 +43,7 @@
 	<style name="TextView.AppSettingsTitle">
 		<item name="android:textSize">@dimen/title_font_size</item>
 		<item name="android:textColor">@android:color/white</item>
-		<item name="android:textStyle">bold</item>
+		<item name="android:textStyle">normal</item>
 		<item name="android:drawablePadding">@dimen/grid1</item>
 		<item name="android:gravity">center_vertical</item>
 	</style>
@@ -70,6 +70,10 @@
 	<style name="TextView.SettingTitle">
 		<item name="android:textSize">18sp</item>
 		<item name="android:textColor">@color/white</item>
+	</style>
+
+	<style name="TextView.SettingTitle.Gray">
+		<item name="android:textColor">@color/gray</item>
 	</style>
 
 	<style name="TextView.SettingDesc">
