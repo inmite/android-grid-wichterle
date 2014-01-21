@@ -44,3 +44,4 @@ Or:
 [Otto Wichterle](http://en.wikipedia.org/wiki/Otto_Wichterle) was a famous Czech inventor, best known for his invention of contact lenses.&nbsp;
 You can see more details with contact lenses, just like with this app. You won't miss any misaligned views in your app.
 
+See [**our other Czech personalities**](http://inmite.github.io) who help with [#AndroidDev](https://plus.google.com/s/%23AndroidDev).
