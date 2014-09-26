@@ -37,12 +37,15 @@
 	<string name="settings_set_color">Set color</string>
 	<string name="settings_desc">This app will show grid overlay over whole system which helps you to verify your excellent app design.</string>
 	<string name="settings_the_code">The code</string>
-	<string name="settings_seek_bar">%s dp</string>
+	<string name="n_dp">%s dp</string>
 	<string name="settings_send_feedback">Send Feedback</string>
 	<string name="settings_wichterle_question">Why Wichterle?</string>
 	<string name="settings_wichterle_desc">Otto Wichterle was a famous Czech inventor, best known for his invention of contact lenses. You can see more details with contact lenses, just like with
 		this app. You won\'t miss any misaligned views in your app.</string>
 	<string name="hint">Set grid size</string>
+    <string name="top_margin">Top Margin</string>
+    <string name="left_margin">Left Margin</string>
+    <string name="alternate_size">Alternate Size</string>
 
 
 </resources>

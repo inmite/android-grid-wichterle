@@ -8,8 +8,18 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.*;
+import android.widget.CheckedTextView;
+import android.widget.CompoundButton;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.SeekBar;
+import android.widget.Switch;
+import android.widget.TextView;
 
+import com.squareup.otto.Subscribe;
+
+import butterknife.InjectView;
+import butterknife.Views;
 import eu.inmite.android.gridwichterle.R;
 import eu.inmite.android.gridwichterle.bus.BusProvider;
 import eu.inmite.android.gridwichterle.bus.CancelGridBus;
@@ -21,10 +31,6 @@ import eu.inmite.android.gridwichterle.core.Utils;
 import eu.inmite.android.gridwichterle.dialogs.ColorsDialog;
 import eu.inmite.android.gridwichterle.services.GridOverlayService;
 
-import butterknife.InjectView;
-import butterknife.Views;
-import com.squareup.otto.Subscribe;
-
 /**
  * Created with IntelliJ IDEA.
  * User: Michal Matl
@@ -33,16 +39,33 @@ import com.squareup.otto.Subscribe;
  */
 public class SettingsActivity extends FragmentActivity {
 
-	@InjectView(R.id.txtGridSize)
-	public TextView txtGridSize;
 	@InjectView(R.id.txtVersion)
 	public TextView txtVersion;
 	@InjectView(R.id.txtSendFeedback)
 	public TextView txtSendFeedback;
 	@InjectView(R.id.txtTheCode)
 	public LinearLayout txtTheCode;
+
+	@InjectView(R.id.txtGridSize)
+	public TextView txtGridSize;
 	@InjectView(R.id.seekBar)
 	public SeekBar seekBar;
+
+	@InjectView(R.id.txtGridAlternateSize)
+	public TextView txtGridAlternateSize;
+	@InjectView(R.id.alternateSeekBar)
+	public SeekBar alternateSeekBar;
+
+	@InjectView(R.id.txtTopMargin)
+	public TextView txtTopMargin;
+	@InjectView(R.id.topMarginSeekBar)
+	public SeekBar topMarginSeekBar;
+
+	@InjectView(R.id.txtLeftMargin)
+	public TextView txtLeftMargin;
+	@InjectView(R.id.leftMarginSeekBar)
+	public SeekBar leftMarginSeekBar;
+
 	@InjectView(R.id.layoutColor)
 	public RelativeLayout layoutColor;
 	@InjectView(R.id.viewColor)
@@ -77,8 +100,8 @@ public class SettingsActivity extends FragmentActivity {
 
 	private void setupViews() {
 
-		mConfig = (Config)getApplicationContext().getSystemService(Config.class.getName());
-		final String seekBarString = getString(R.string.settings_seek_bar);
+		mConfig = (Config) getApplicationContext().getSystemService(Config.class.getName());
+		final String seekBarString = getString(R.string.n_dp);
 
 		chckFullScreen.setChecked(mConfig.isFullScreenModeActivated());
 		chckFullScreen.setOnClickListener(new View.OnClickListener() {
@@ -131,12 +154,69 @@ public class SettingsActivity extends FragmentActivity {
 
 			@Override
 			public void onStopTrackingTouch(SeekBar seekBar) {
-				mConfig.setGridSideSize(seekBar.getProgress() + 4);
+				mConfig.setGridSideSize(seekBar.getProgress());
 				applyNow();
 			}
 		});
-
 		seekBar.setProgress(mConfig.getGridSideSize());
+
+		alternateSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+			@Override
+			public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
+				txtGridAlternateSize.setText(String.format(seekBarString, Integer.toString(progress)));
+			}
+
+			@Override
+			public void onStartTrackingTouch(SeekBar seekBar) {
+
+			}
+
+			@Override
+			public void onStopTrackingTouch(SeekBar seekBar) {
+				mConfig.setAlternateGridSideSize(seekBar.getProgress());
+				applyNow();
+			}
+		});
+		alternateSeekBar.setProgress(mConfig.getAlternateGridSideSize());
+
+		topMarginSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+			@Override
+			public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
+				txtTopMargin.setText(String.format(seekBarString, Integer.toString(progress)));
+			}
+
+			@Override
+			public void onStartTrackingTouch(SeekBar seekBar) {
+
+			}
+
+			@Override
+			public void onStopTrackingTouch(SeekBar seekBar) {
+				mConfig.setTopMargin(topMarginSeekBar.getProgress());
+				applyNow();
+			}
+		});
+		topMarginSeekBar.setProgress(mConfig.getTopMargin());
+
+		leftMarginSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+			@Override
+			public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
+				txtLeftMargin.setText(String.format(seekBarString, Integer.toString(progress)));
+			}
+
+			@Override
+			public void onStartTrackingTouch(SeekBar seekBar) {
+
+			}
+
+			@Override
+			public void onStopTrackingTouch(SeekBar seekBar) {
+				mConfig.setLeftMargin(leftMarginSeekBar.getProgress());
+				applyNow();
+			}
+		});
+		leftMarginSeekBar.setProgress(mConfig.getLeftMargin());
+
 		txtGridSize.setText(String.format(seekBarString, Integer.toString(mConfig.getGridSideSize())));
 
 		layoutColor.setOnClickListener(new View.OnClickListener() {
