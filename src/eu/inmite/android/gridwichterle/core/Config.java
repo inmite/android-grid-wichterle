@@ -45,6 +45,36 @@ public class Config {
 		return getPrefs().getInt("side_size", Constants.DEFAULT_SQUARE_SIDE);
 	}
 
+	public void setAlternateGridSideSize(int side) {
+		getPrefs().edit()
+				.putInt("alternate_side_size", side)
+				.apply();
+	}
+
+	public int getAlternateGridSideSize() {
+		return getPrefs().getInt("alternate_side_size", Constants.DEFAULT_SQUARE_SIDE);
+	}
+
+	public void setTopMargin(int topMargin) {
+		getPrefs().edit()
+				.putInt("top_margin", topMargin)
+				.apply();
+	}
+
+	public int getTopMargin() {
+		return getPrefs().getInt("top_margin", Constants.DEFAULT_SQUARE_SIDE);
+	}
+
+	public void setLeftMargin(int leftMargin) {
+		getPrefs().edit()
+				.putInt("left_margin", leftMargin)
+				.apply();
+	}
+
+	public int getLeftMargin() {
+		return getPrefs().getInt("left_margin", Constants.DEFAULT_SQUARE_SIDE);
+	}
+
 	public void setColor(int color) {
 		getPrefs().edit()
 				.putInt("color", color)

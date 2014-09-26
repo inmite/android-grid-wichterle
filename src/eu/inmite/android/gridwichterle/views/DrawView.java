@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.view.View;
+
 import eu.inmite.android.gridwichterle.core.Config;
 import eu.inmite.android.gridwichterle.core.Utils;
 
@@ -21,7 +22,10 @@ public class DrawView extends View {
 	private final Paint paint = new Paint();
 	private final int height;
 	private final int width;
+	private final int mTopMargin;
+	private final int mLeftMargin;
 	private final int mSquare;
+	private final int mSquareAlternate;
 	private float[] points;
 
 	public DrawView(Context context, int height, int width) {
@@ -32,7 +36,10 @@ public class DrawView extends View {
 
 		Config config = (Config) getContext().getApplicationContext().getSystemService(Config.class.getName());
 		paint.setColor(config.getColor());
+		mTopMargin = Utils.getPxFromDpi(getContext(), config.getTopMargin());
+		mLeftMargin = Utils.getPxFromDpi(getContext(), config.getLeftMargin());
 		mSquare = Utils.getPxFromDpi(getContext(), config.getGridSideSize());
+		mSquareAlternate = Utils.getPxFromDpi(getContext(), config.getAlternateGridSideSize());
 	}
 
 	@Override
@@ -41,30 +48,40 @@ public class DrawView extends View {
 
 		List<Float> gridPoints = new LinkedList<Float>();
 
-		int countHorizontalLines = height / mSquare;
-		int countVerticalLines = width / mSquare;
-
 		//prepare horizontal lines
-		float gap = mSquare;
-		for (int i = 0; i <= countHorizontalLines; i++) {
+		float gap = mTopMargin;
+		for (int i = 0; ; i++) {
 			gridPoints.add(0f);
 			gridPoints.add(gap);
 			gridPoints.add((float) width);
 			gridPoints.add(gap);
 
-			gap = gap + mSquare;
-
+			if (i % 2 == 0) {
+				gap = gap + mSquare;
+			} else {
+				gap = gap + mSquareAlternate;
+			}
+			if (gap > height) {
+				break;
+			}
 		}
 
 		//prepare vertical lines
-		gap = mSquare;
-		for (int i = 0; i <= countVerticalLines; i++) {
+		gap = mLeftMargin;
+		for (int i = 0; ; i++) {
 			gridPoints.add(gap);
 			gridPoints.add(0f);
 			gridPoints.add(gap);
 			gridPoints.add((float) height);
 
-			gap = gap + mSquare;
+			if (i % 2 == 0) {
+				gap = gap + mSquare;
+			} else {
+				gap = gap + mSquareAlternate;
+			}
+			if (gap > width) {
+				break;
+			}
 		}
 
 		points = new float[gridPoints.size()];
